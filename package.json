@@ -1,0 +1,27 @@
+{
+  "name": "movie-koa2",
+  "version": "1.0.0",
+  "description": "电影预片",
+  "main": "app.js",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "koa": "^2.7.0",
+    "koa-art-template": "^1.1.1",
+    "koa-views": "^6.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myself3073/movie-koa2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myself3073/movie-koa2/issues"
+  },
+  "homepage": "https://github.com/myself3073/movie-koa2#readme"
+}

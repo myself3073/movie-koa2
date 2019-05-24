@@ -1,0 +1,195 @@
+{{extend './layouts/main.html'}}
+{{block 'content'}}
+<style type="text/css" media="screen">
+header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: #00474f;
+    color: #E7DACB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    z-index: 500;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 4rem;
+        z-index: 1000;
+        height: calc(100vh - 4rem);
+        border-right: 1px solid rgba(0, 0, 0, .1);
+        order: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    .cat-links {
+        display: block !important;
+        max-height: calc(100vh - 9rem);
+        overflow-y: auto;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+}
+
+.sidebar-link {
+    display: block;
+    padding: .25rem 1.5rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .65);
+}
+
+.sidebar .nav>li>a {
+    display: block;
+    padding: .25rem 1.5rem;
+    font-size: 90%;
+    color: rgba(0, 0, 0, .65);
+}
+
+.sidebar-item.active>.sidebar-inner {
+    display: block;
+}
+
+.card {
+    margin-bottom: 1.5rem;
+}
+
+.switcher {
+    position: relative;
+    padding: 1rem 15px;
+    margin-right: -15px;
+    margin-left: -15px;
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+
+.sidebar-toggle {
+    line-height: 1;
+    color: #212529;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.ml-3,
+.mx-3 {
+    margin-left: 1rem !important;
+}
+
+.btn-link {
+    font-weight: 400;
+    color: #007bff;
+    background-color: transparent;
+}
+</style>
+{{include './particles/header.html'}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-3 col-xl-2 sidebar">
+            <div class="collapse cat-links">
+                <div class="sidebar-item active"><a class="sidebar-link" href="/">Links</a>
+                    <ul class="nav sidebar-inner">
+                        <li class="active sidebar-inner-active"><a href="/">Link1</a></li>
+                        <li class="sidebar-inner-active"><a href="/">Link2</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card"><img class="card-img-top" src="http://pic1.win4000.com/wallpaper/2017-12-02/5a224092e284b.png" data-video="https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4">
+                        <div class="card-body">
+                            <h4 class="card-title">这是电影标题</h4>
+                            <p class="card-desc">这是电影描述</p>
+                        </div>
+                        <div class="card-footer"><small class="text-muted">1 天前更新</small></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card"><img class="card-img-top" src="http://pic1.win4000.com/wallpaper/2017-12-02/5a224092e284b.png" data-video="https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4">
+                        <div class="card-body">
+                            <h4 class="card-title">这是电影标题</h4>
+                            <p class="card-desc">这是电影描述</p>
+                        </div>
+                        <div class="card-footer"><small class="text-muted">1 天前更新</small></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card"><img class="card-img-top" src="http://pic1.win4000.com/wallpaper/2017-12-02/5a224092e284b.png" data-video="https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4">
+                        <div class="card-body">
+                            <h4 class="card-title">这是电影标题</h4>
+                            <p class="card-desc">这是电影描述</p>
+                        </div>
+                        <div class="card-footer"><small class="text-muted">1 天前更新</small></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card"><img class="card-img-top" src="http://pic1.win4000.com/wallpaper/2017-12-02/5a224092e284b.png" data-video="https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4">
+                        <div class="card-body">
+                            <h4 class="card-title">这是电影标题</h4>
+                            <p class="card-desc">这是电影描述</p>
+                        </div>
+                        <div class="card-footer"><small class="text-muted">1 天前更新</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="videoModal"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var player = null;
+        $('.card-img-top').on('click',function(){
+            var video = this.dataset['video'];
+            var img = $(this).attr('src');
+
+            $('#myModal').modal();
+
+            if(!player){
+                player = new DPlayer({
+                    container: document.getElementById('videoModal'),
+                    screenshot: true,
+                    preload:true,
+                    video: {
+                        url: video,
+                        pic:img,
+                        thumbnails: img,
+                        }
+                    });
+            }else{
+                if(player.video.currentSrc !== video){
+                    player.switchVideo({
+                        url: video,
+                        pic:img,
+                        thumbnails: img,
+                    })
+                }
+            }
+
+
+        });
+
+        $('#myModal').on('hidden.bs.modal', function (e) {
+            console.log(player);
+        //点击视频外，视频隐藏=>视频停止
+        if (player && !player.paused){
+            player.video.pause();
+            console.log('ok');
+                }
+            })
+    })
+</script>
+{{/block}}
