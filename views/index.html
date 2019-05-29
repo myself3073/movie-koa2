@@ -155,7 +155,7 @@ header {
         $('.card-img-top').on('click',function(){
             var video = this.dataset['video'];
             var img = $(this).attr('src');
-
+            //boostrap 弹出窗口
             $('#myModal').modal();
 
             if(!player){
@@ -178,16 +178,12 @@ header {
                     })
                 }
             }
-
-
         });
 
         $('#myModal').on('hidden.bs.modal', function (e) {
-            console.log(player);
         //点击视频外，视频隐藏=>视频停止
         if (player && !player.paused){
             player.video.pause();
-            console.log('ok');
                 }
             })
     })

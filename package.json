@@ -5,9 +5,15 @@
   "main": "app.js",
   "dependencies": {
     "art-template": "^4.13.2",
+    "bcryptjs": "^2.4.3",
+    "child_process": "^1.0.2",
     "koa": "^2.7.0",
     "koa-art-template": "^1.1.1",
-    "koa-views": "^6.2.0"
+    "koa-views": "^6.2.0",
+    "mongoose": "^5.5.11",
+    "node-gyp": "^4.0.0",
+    "puppeteer": "^1.17.0",
+    "request-promise-native": "^1.0.7"
   },
   "devDependencies": {},
   "scripts": {
