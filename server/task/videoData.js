@@ -22,7 +22,7 @@ const Category = mongoose.model('Category')
 
   //运行爬取的脚本
   const script = resolve(__dirname, '../crawler/getVideoData.js')
-  const child = cp.fork(script, [])
+  const child = await cp.fork(script, [])
   //检测是否被处理过
   let invoked = false
 
@@ -40,7 +40,7 @@ const Category = mongoose.model('Category')
     invoked = true
     let err = code === 0 ? null : new Error('exit code ' + code)
 
-    console.log(err)
+    console.log('^_^videoData:'+err)
   })
 
   child.on('message', async data => {

@@ -16,3 +16,8 @@ dist
 # Build
 build
 start.cmd
+
+#dist
+/dist
+
+.cache

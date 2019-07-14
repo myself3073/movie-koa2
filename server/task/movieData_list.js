@@ -20,7 +20,7 @@ const Movie = mongoose.model('Movie')
 
     invoked = true
 
-    console.log(err)
+    console.log('^_^movieData_list.js1:'+err)
   })
 
   child.on('exit', code => {
@@ -29,7 +29,7 @@ const Movie = mongoose.model('Movie')
     invoked = true
     let err = code === 0 ? null : new Error('exit code ' + code)
 
-    console.log(err)
+    console.log('^_^movieData_list.js2:'+err)
   })
 
   

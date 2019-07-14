@@ -9,16 +9,18 @@ const Movie = mongoose.model('Movie')
 
 const Category = mongoose.model('Category')
 
+const myConfig = require('../../config')
+
 async function fetchMovie (item) {
   // const url = `http://api.douban.com/v2/movie/subject/${item.doubanId}`
-  const url = `http://api.douban.com/v2/movie/${item.doubanId}?apikey=0df993c66c0c636e29ecbb5344252a4a`
+  const url = `http://api.douban.com/v2/movie/${item.doubanId}?apikey=${myConfig.douban.apiKey}`
   const res = await rp(url)
   let body
 
   try {
     body = JSON.parse(res)
   } catch (err) {
-    console.log(err)
+    console.log('^_^api.js:'+err)
   }
 
   return body

@@ -164,4 +164,4 @@ const usersSchema = new Schema({
         }
 
 
-        mongoose.model('users', usersSchema);
+        mongoose.model('User', usersSchema);

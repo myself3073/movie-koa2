@@ -18,6 +18,7 @@ const sleep = time => new Promise(resolve => {
 //当getMoviesData_list.js那里的//将数据送出去 process.send({movieList})时这个触发
 process.on('message', async (movieList) => {
     console.log('Start visit the target page===2')
+    // console.log(movieList)
 
     const browser = await puppeteer.launch({
         args: ['--no-sandbox'],

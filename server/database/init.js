@@ -10,7 +10,9 @@ const glob = require('glob');
 
 const path = require('path');
 
-const db = 'mongodb://localhost/douban';
+const myConfig = require('../../config')
+
+const db = myConfig.douban.db;
 
 //使mongoose用原生的Promise
 
