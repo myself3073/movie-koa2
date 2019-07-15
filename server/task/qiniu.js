@@ -35,13 +35,12 @@ const uploadToQiniu = async (url,key)=>{
 	let movies = await Movie.find({
 		$or:[{videoKey:{ $exists: true }},{videoKey:''},{videoKey:null}]
 	})
-	for (let i = 0; i < 2; i++) {
+	for (let i = 0; i < movies.length; i++) {
 		let movie = movies[i]
 		if(movie.video && !movie.videoKey){
 			try{
 				console.log('开始传 video......')
         		let videoData = await uploadToQiniu(movie.video, nanoID() + '.mp4')
-        		let posterData = await uploadToQiniu(movie.poster, nanoID() + '.jpg')
         		if(videoData){
         			movie.videoKey = videoData.key
         		}
