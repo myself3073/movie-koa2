@@ -37,7 +37,7 @@ const useMiddlewares = (app) => {
   // require('./task/movieData_list.js')
   // require('./task/api.js')
   // require('./task/videoData.js')
-  require('./task/qiniu.js')
+  // require('./task/qiniu.js')
 	await useMiddlewares(app);
 	app.listen(9966,()=>{
 	console.log("服务器启动在9966端口");

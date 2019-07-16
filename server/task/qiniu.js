@@ -44,9 +44,6 @@ const uploadToQiniu = async (url,key)=>{
         		if(videoData){
         			movie.videoKey = videoData.key
         		}
-        		if(posterData){
-        			movie.posterKey = posterData.key
-        		}
         		await movie.save()
 			}catch(e){
 				console.log(e)

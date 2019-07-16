@@ -1,7 +1,7 @@
 module.exports = {
 	'qiniu':{
-		'bucket': 'videodata',
-		'path': 'ptyyg4b7t.bkt.clouddn.com',
+		'bucket': 'doubanmovies',
+		'path': 'pu4f089yr.bkt.clouddn.com',
 		'AK': 'egaNSeHESN1ZFKH4X6w8hEiENtvdmqZei1qD_jE0',
 		'SK': 'h9IiqRSX4WSBDY5CXwrEzEn1C0g9n8u0xYhUyS15'
 	},

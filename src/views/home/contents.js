@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
+import { qiniu } from '../../../config'
+
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 
@@ -35,30 +37,24 @@ export default class Content extends React.Component{
 	}
 
 	_cancelHandle = ()=>{
+		
+		if(this.player&&this.player.pause){
+			this.player.pause()
+		}
+
 		this.setState({
 			visible: false
 		})
-	}
-
-	// _showModal = (movie)=>{
-	// 	this.setState({
-	// 		visible: true
-	// 	})
-	// 	const { cover,video } = movie
-	// 	setTimeout(()=>{
-	// 		document.getElementById('videoPlayer').src = video
-	// 		},500)
- //        }
- //        
+	}       
  	_showModal = (movie) => {
     this.setState({
       visible: true
     })
 
-    const { cover } = movie
+	const { cover,videoKey} = movie
+	
+	const videoUrl = qiniu.path + '/' + videoKey
 
-    let video = movie.video.replace('http','https')
-    console.log(video)
 
     if (!this.player) {
       setTimeout(() => {
@@ -67,16 +63,19 @@ export default class Content extends React.Component{
           screenshot: true,
           autoplay: true,
           video: {
-            url: 'http://pu1mgwmww.bkt.clouddn.com/THgmKpFOC5_P66NYAebfN.mp4',
+			//   如果不加'http://',直接给pu4f089yr.bkt.clouddn.com/xgvNFK2zV_fhi3x_AKDNs.mp4，
+			//浏览器会默认http://127.0.0.1/pu4f089yr.bkt.clouddn.com/xgvNFK2zV_fhi3x_AKDNs.mp4 这样是不对的
+            url: 'http://'+videoUrl,
             pic: cover,
             thumbnails: cover
           }
         })
       }, 500)
     } else {
-      if (this.player.video.currentSrc !== video) {
+		console.log(videoUrl)
+      if (this.player.video.currentSrc !== videoUrl) {
         this.player.switchVideo({
-          url: 'http://pu1mgwmww.bkt.clouddn.com/THgmKpFOC5_P66NYAebfN.mp4',
+          url: 'http://'+videoUrl,
           autoplay: true,
           pic: cover,
           type: 'auto'
@@ -143,7 +142,6 @@ export default class Content extends React.Component{
 					style={{width: '1000px',height: '800px'}}
 					bodyStyle={{ padding: '0px' }}
 					>
-					<video src="" id="videoPlayer" width={'100%'} height={'100%'} autobuffer="true" controls></video>
 				</Modal>
 			</div>
 		)
